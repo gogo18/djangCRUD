@@ -5,9 +5,7 @@ from .models import Book # Import table book from models
 # Get 
 def getBook(request):
     books = Book.objects.all()
-    for book in books:
-        book_id = book.id
-    return TemplateResponse(request, 'book/index.html', { "books": books, "book_id": book_id})
+    return TemplateResponse(request, 'book/index.html', { "books": books})
 
 def input(request):
     return TemplateResponse(request, 'book/forminput.html')
