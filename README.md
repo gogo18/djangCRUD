@@ -2,8 +2,9 @@
 
 ## Prerequisites
 
-Django 2.0+
-Python
+    Django 2.0+
+    
+    Python 3+
 
 ## Running the Application
 
