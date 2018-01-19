@@ -1,0 +1,55 @@
+{% load static %}
+<html>
+    <head>
+        <title>Book</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> <!-- Bootstrap css -->
+        <link rel="stylesheet" href="{% static 'jquery-ui/jquery-ui.min.css'%}">
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #28a745;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/book/" style="color: rgb(255, 255, 255);">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul> <!-- navbar-nav mr-auto -->
+                </div> <!-- collapse navbar-collapse -->
+            </nav> <!-- navbar navbar-expand-lg navbar-light bg-light -->
+            <div class="col-md-6">
+                <h1>Book</h1>
+                <form action="update" method="POST">
+                    {% csrf_token %}
+                    <label for="">Title</label>
+                    <input type="text" name="title" class="form-control" value="{{ books.title }}" required>
+                    <label for="">Author</label>
+                    <input type="text" name="author" class="form-control" value="{{ books.author }}" required>
+                    <label for="">Date Published</label>
+                    <input type="text" name="date_publish" id="datepicker" value="{{ books.date_publish }}" class="form-control">
+                    <label for="">Number Of Pages</label>
+                    <input type="number" name="number_of_page" value="{{ books.number_of_page }}" class="form-control"   >
+                    <label for="">Type Of Book</label>
+                    <select name="type_of_book" id="" class="form-control">
+                        <option value="{{ books.type_of_book }}">{{ books.type_of_book }}</option>
+                        <option value="One Of Novel">One Of Novel</option>
+                        <option value="Documentation">Documentation</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br>
+                    <button class="form-control btn btn-success" type="submit">Save</button>
+                </form> <!-- Form -->
+            </div><!-- Col-md-6 -->
+        </div> <!-- Container -->
+    </body>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script> <!-- Jquery v.3.2.1-->
+    <script src="{% static 'js/bootstrap.js'%}"></script> <!-- Bootstrap javascript -->
+    <script src="{% static 'jquery-ui/jquery-ui.min.js'%}"></script> <!-- Jquery-ui -->
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+        } );
+    </script>
+</html>
